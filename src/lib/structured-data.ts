@@ -1,5 +1,6 @@
 import { business } from "@/data/business";
 import { siteConfig } from "@/lib/site-config";
+import type { SpaceDetail } from "@/types/space";
 
 const abs = (path: string) => new URL(path, siteConfig.url).toString();
 
@@ -38,6 +39,47 @@ export function landingJsonLd() {
             reviewCount: business.rating.reviewCount,
           },
         }),
+      },
+    ],
+  };
+}
+
+/** Product + Offer + BreadcrumbList for a space detail page. */
+export function spaceJsonLd(space: SpaceDetail) {
+  const url = abs(`/spaces/${space.slug}`);
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": `${url}#product`,
+        name: space.name,
+        description: space.description,
+        image: space.gallery.map((image) => abs(image.src)),
+        category: space.categoryLabel,
+        brand: { "@type": "Brand", name: business.legalName },
+        offers: {
+          "@type": "Offer",
+          url,
+          price: space.prices.daily,
+          priceCurrency: "IDR",
+          availability: "https://schema.org/InStock",
+        },
+        // aggregateRating is omitted on purpose: the design shows a score but no review count.
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: abs("/") },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: space.categoryLabel,
+            item: abs(`/spaces?type=${space.type}`),
+          },
+          { "@type": "ListItem", position: 3, name: space.name, item: url },
+        ],
       },
     ],
   };

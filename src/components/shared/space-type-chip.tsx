@@ -34,9 +34,13 @@ export function SpaceTypeIcon({ type, className }: SpaceTypeIconProps) {
   return <Icon aria-hidden className={cn(text, className)} />;
 }
 
-type SpaceTypeChipProps = { type: SpaceType; label: string };
+type SpaceTypeChipProps = {
+  type: SpaceType;
+  label: string;
+  className?: string;
+};
 
-export function SpaceTypeChip({ type, label }: SpaceTypeChipProps) {
+export function SpaceTypeChip({ type, label, className }: SpaceTypeChipProps) {
   const { Icon, text, bg } = spaceTypeStyles[type];
   return (
     <span
@@ -44,6 +48,7 @@ export function SpaceTypeChip({ type, label }: SpaceTypeChipProps) {
         "inline-flex w-fit max-w-full items-center gap-2 rounded-4xl px-2 py-1 text-body-13-medium xl:whitespace-nowrap",
         text,
         bg,
+        className,
       )}
     >
       <Icon aria-hidden className="size-3.5" />

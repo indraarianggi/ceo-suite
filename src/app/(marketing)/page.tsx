@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
 import { AppDownloadSection } from "@/components/sections/landing/app-download-section";
 import { BestDealsSection } from "@/components/sections/landing/best-deals-section";
 import { BrowseSpacesSection } from "@/components/sections/landing/browse-spaces-section";
@@ -55,7 +53,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(landingJsonLd()) }}
       />
-      <SiteHeader />
       <main className="flex-1">
         <HeroSection />
         <BrowseSpacesSection />
@@ -70,7 +67,6 @@ export default function HomePage() {
         <FaqSection />
         <AppDownloadSection />
       </main>
-      <SiteFooter />
     </>
   );
 }

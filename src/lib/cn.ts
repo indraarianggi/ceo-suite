@@ -28,7 +28,9 @@ export const cn = createCn({
     classGroups: {
       "font-size": [{ text: textStyles }],
       // Custom shadow tokens must replace a component's default `shadow-md`.
-      shadow: [{ shadow: ["card", "brand", "menu"] }],
+      shadow: [
+        { shadow: ["card", "brand", "menu", "panel", "float", "popover"] },
+      ],
     },
   },
 });

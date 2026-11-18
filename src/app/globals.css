@@ -29,6 +29,12 @@
 /* Page container: content is max 1600px wide and centered. The gutter grows
    with the viewport so 4-column grids still fit at 1280. At 1920 the gutter
    plus centering margin is exactly the Figma 160px. */
+@utility outline-hairline {
+  outline-style: solid;
+  outline-width: 0.5px;
+  outline-offset: -0.5px;
+}
+
 @utility page-container {
   --page-gutter: 1rem;
   margin-inline: auto;
@@ -189,6 +195,11 @@
      (CSS drop-shadow blur is a standard deviation, so ~half of Figma's radius). */
   --drop-shadow-device: 8px 8px 56px rgb(0 0 0 / 0.08);
   --shadow-brand: 0 4px 16px 0 rgb(190 68 68 / 0.3); /* primary CTA glow (product-600) */
+  /* Product page: booking card (blur 20) and the floating "Show All Photos" button. */
+  --shadow-panel: 0 4px 20px 0 rgb(57 57 57 / 0.2);
+  --shadow-float: 0 20px 20px 0 rgb(57 57 57 / 0.2);
+  /* Date and time popovers */
+  --shadow-popover: 0 10px 20px 0 rgb(57 57 57 / 0.2);
 
   --blur-glow: 256px;
 }
