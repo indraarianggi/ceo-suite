@@ -1,3 +1,4 @@
+import { mapPinSlots } from "@/data/listing-map";
 import type { Space, SpaceCategory } from "@/types/space";
 
 export const spaceCategories: SpaceCategory[] = [
@@ -37,6 +38,9 @@ const axaTowerLounge: Space = {
   type: "meeting-room",
   categoryLabel: "Meeting Room",
   capacity: 4,
+  city: "Jakarta",
+  region: "South Jakarta",
+  pin: mapPinSlots[0],
   image: {
     src: "/images/spaces/rec-meeting-room-lounge.webp",
     alt: "Meeting room with a long table and tan chairs facing large windows",
@@ -52,6 +56,9 @@ const axaTowerWoodTable: Space = {
   type: "meeting-room",
   categoryLabel: "Meeting Room",
   capacity: 4,
+  city: "Jakarta",
+  region: "South Jakarta",
+  pin: mapPinSlots[3],
   image: {
     src: "/images/spaces/rec-meeting-room-wood-table.webp",
     alt: "Industrial meeting room with a wooden table, laptops and a chalkboard",
@@ -67,6 +74,9 @@ const suite7View: Space = {
   type: "private-office",
   categoryLabel: "Office",
   capacity: 8,
+  city: "Jakarta",
+  region: "Central Jakarta",
+  pin: mapPinSlots[4],
   image: {
     src: "/images/spaces/rec-suite-7-view.webp",
     alt: "Colourful open-plan office with a ping-pong table and pendant lamps",
@@ -82,6 +92,9 @@ const suiteVip5: Space = {
   type: "coworking",
   categoryLabel: "Co-Working Space (Dedicated)",
   capacity: 1,
+  city: "Jakarta",
+  region: "South Jakarta",
+  pin: mapPinSlots[5],
   image: {
     src: "/images/spaces/rec-suite-vip-5.webp",
     alt: "Three colleagues smiling while working on laptops at a wooden table",
@@ -99,16 +112,28 @@ export const recommendedSpaces: Space[] = [
     ...axaTowerLounge,
     id: "axa-tower-meeting-room-c",
     slug: "axa-tower-meeting-room-c",
+    region: "West Jakarta",
+    pin: mapPinSlots[2],
   },
   {
     ...axaTowerWoodTable,
     id: "axa-tower-meeting-room-d",
     slug: "axa-tower-meeting-room-d",
+    region: "Central Jakarta",
+    pin: mapPinSlots[8],
   },
-  { ...suite7View, id: "suite-7-view-2", slug: "suite-7-view-2" },
+  {
+    ...suite7View,
+    id: "suite-7-view-2",
+    slug: "suite-7-view-2",
+    region: "South Jakarta",
+    pin: mapPinSlots[6],
+  },
   {
     ...suiteVip5,
     id: "suite-vip-5-non-view-2",
     slug: "suite-vip-5-non-view-2",
+    region: "West Jakarta",
+    pin: mapPinSlots[7],
   },
 ];

@@ -2,6 +2,7 @@ import { cacheLife } from "next/cache";
 
 import { spaceDetails } from "@/data/space-details";
 import { recommendedSpaces, spaceCategories } from "@/data/spaces";
+import { filterSpaces, type SpaceSearchQuery } from "@/lib/space-search";
 import type { Space, SpaceCategory, SpaceDetail } from "@/types/space";
 
 export async function getSpaceCategories(): Promise<SpaceCategory[]> {
@@ -35,4 +36,14 @@ export async function getSimilarSpaces(slug: string): Promise<Space[]> {
   "use cache";
   cacheLife("hours");
   return spaceDetails.filter((space) => space.slug !== slug).slice(0, 4);
+}
+
+/**
+ * Listing search. The parsed query is the cache key, so each distinct
+ * filter combination is cached once. A real API would take the same query.
+ */
+export async function searchSpaces(query: SpaceSearchQuery): Promise<Space[]> {
+  "use cache";
+  cacheLife("hours");
+  return filterSpaces(spaceDetails, query);
 }

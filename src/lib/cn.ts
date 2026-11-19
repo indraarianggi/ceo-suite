@@ -30,6 +30,7 @@ export const cn = createCn({
       "font-size": [{ text: textStyles }],
       "max-w": [{ "max-w": ["auth", "auth-wide"] }],
       rounded: [{ rounded: ["card"] }],
+      "text-shadow": [{ "text-shadow": ["hero"] }],
       shadow: [
         {
           shadow: [

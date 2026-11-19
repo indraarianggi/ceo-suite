@@ -1,3 +1,5 @@
+import type { City } from "../types/space.ts";
+
 export type HeroSlide = { src: string; alt: string };
 
 export const heroSlides: HeroSlide[] = [
@@ -17,7 +19,12 @@ export const heroCopy = {
     "Experience the ultimate in flexible, premium workspaces where luxury meets productivity—CEO SUITE offers an inspiring environment tailored to elevate your business success.",
 } as const;
 
-export const cities = ["Jakarta", "Bandung", "Surabaya", "Bali"] as const;
+export const cities = [
+  "Jakarta",
+  "Bandung",
+  "Surabaya",
+  "Bali",
+] as const satisfies readonly City[];
 
 export const searchSpaceTypes = [
   { value: "all", label: "All Rooms" },

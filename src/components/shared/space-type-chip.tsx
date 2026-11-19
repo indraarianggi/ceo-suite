@@ -1,4 +1,12 @@
-import { Building2, DoorOpen, Laptop, type LucideIcon } from "lucide-react";
+import {
+  Building2,
+  Clapperboard,
+  DoorOpen,
+  GraduationCap,
+  Laptop,
+  Presentation,
+  type LucideIcon,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { SpaceType } from "@/types/space";
@@ -25,6 +33,29 @@ export const spaceTypeStyles: Record<SpaceType, SpaceTypeStyle> = {
     text: "text-space-meeting",
     bg: "bg-space-meeting-bg",
   },
+  "event-space": {
+    Icon: Presentation,
+    text: "text-space-seminar",
+    bg: "bg-space-seminar-bg",
+  },
+};
+
+const labelStyles: Record<string, SpaceTypeStyle> = {
+  "Class Room": {
+    Icon: GraduationCap,
+    text: "text-space-class",
+    bg: "bg-space-class-bg",
+  },
+  "Theatre Room": {
+    Icon: Clapperboard,
+    text: "text-space-theatre",
+    bg: "bg-space-theatre-bg",
+  },
+  "Co-Working Space (Non-Dedicated)": {
+    Icon: Laptop,
+    text: "text-space-coworking-open",
+    bg: "bg-space-coworking-open-bg",
+  },
 };
 
 type SpaceTypeIconProps = { type: SpaceType; className?: string };
@@ -41,7 +72,7 @@ type SpaceTypeChipProps = {
 };
 
 export function SpaceTypeChip({ type, label, className }: SpaceTypeChipProps) {
-  const { Icon, text, bg } = spaceTypeStyles[type];
+  const { Icon, text, bg } = labelStyles[label] ?? spaceTypeStyles[type];
   return (
     <span
       className={cn(

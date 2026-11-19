@@ -1,4 +1,7 @@
-export type SpaceType = "private-office" | "coworking" | "meeting-room";
+export type SpaceType =
+  "private-office" | "coworking" | "meeting-room" | "event-space";
+
+export type City = "Jakarta" | "Bandung" | "Surabaya" | "Bali";
 
 export type PriceUnit = "hourly" | "daily" | "weekly" | "monthly";
 
@@ -15,6 +18,9 @@ export type Space = {
   type: SpaceType;
   categoryLabel: string;
   capacity: number;
+  city: City;
+  region: string;
+  pin: { x: number; y: number };
   image: { src: string; alt: string };
   price: SpacePrice;
   secondaryPrice: SpacePrice;

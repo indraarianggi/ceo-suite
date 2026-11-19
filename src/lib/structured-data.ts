@@ -1,6 +1,6 @@
 import { business } from "@/data/business";
 import { siteConfig } from "@/lib/site-config";
-import type { SpaceDetail } from "@/types/space";
+import type { Space, SpaceDetail } from "@/types/space";
 
 const abs = (path: string) => new URL(path, siteConfig.url).toString();
 
@@ -82,6 +82,23 @@ export function spaceJsonLd(space: SpaceDetail) {
         ],
       },
     ],
+  };
+}
+
+/** ItemList for an indexable listing view (the plain listing or one space type). */
+export function listingJsonLd(spaces: Space[], name: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    url: abs(path),
+    numberOfItems: spaces.length,
+    itemListElement: spaces.map((space, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: space.name,
+      url: abs(`/spaces/${space.slug}`),
+    })),
   };
 }
 

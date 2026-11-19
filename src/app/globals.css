@@ -57,6 +57,23 @@
   }
 }
 
+@utility page-gutter-start {
+  padding-inline-start: 1rem;
+  scroll-padding-inline-start: 1rem;
+
+  @variant md {
+    padding-inline-start: 2rem;
+    scroll-padding-inline-start: 2rem;
+  }
+  @variant xl {
+    padding-inline-start: max(3rem, calc((100vw - var(--container-page)) / 2));
+    scroll-padding-inline-start: max(
+      3rem,
+      calc((100vw - var(--container-page)) / 2)
+    );
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * Raw tokens (Figma names preserved: `product color/800` -> --color-product-800)
  * ------------------------------------------------------------------------- */
@@ -157,6 +174,17 @@
   --color-space-coworking-bg: #fcffe6;
   --color-space-meeting: #9e1068;
   --color-space-meeting-bg: #fff0f6;
+  --color-space-coworking-open: #237804;
+  --color-space-coworking-open-bg: #f6ffed;
+  --color-space-class: #ad6800;
+  --color-space-class-bg: #fffbe6;
+  --color-space-seminar: #061178;
+  --color-space-seminar-bg: #f0f5ff;
+  --color-space-theatre: #006d75;
+  --color-space-theatre-bg: #e6fffb;
+  --color-space-board: #ad2102;
+  --color-space-combined: #391085;
+  --color-map-pin: #22968c; /* highlighted pin on the listing map */
 
   /* Stat numbers/icons on "Why CEO SUITE" and the Promotions/Best Deals badge
      backgrounds: also unbound fills in Figma. */
@@ -203,6 +231,7 @@
   --shadow-xs: 0 1px 2px 0 rgb(16 24 40 / 0.05);
   --shadow-sm: 0 2px 6px 0 rgb(57 57 57 / 0.06);
   --shadow-card: 0 4px 24px 0 rgb(57 57 57 / 0.2);
+  --text-shadow-hero: 0 4px 20px rgb(0 0 0 / 0.3); /* listing hero title */
   --shadow-menu:
     0 12px 16px -4px rgb(16 24 40 / 0.08), 0 4px 6px -2px rgb(16 24 40 / 0.03);
   /* Phone mockups in the app section: Figma drop shadow 8/8, blur 115, 8% black

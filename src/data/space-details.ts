@@ -1,3 +1,5 @@
+import { mapPinSlots } from "@/data/listing-map";
+import { moreSpaces } from "@/data/more-spaces";
 import { recommendedSpaces } from "@/data/spaces";
 import type {
   AddOn,
@@ -123,6 +125,9 @@ const wismaGkbi: SpaceDetail = {
   type: "meeting-room",
   categoryLabel: "Meeting Room",
   capacity: 20,
+  city: "Jakarta",
+  region: "Central Jakarta",
+  pin: mapPinSlots[1],
   image: wismaGallery[0],
   price: { unit: "daily", amount: 2_400_000 },
   secondaryPrice: { unit: "hourly", amount: 400_000 },
@@ -170,11 +175,13 @@ function toDetail(space: Space): SpaceDetail {
     prices: pricesFor(space),
     bestDeal: space.price.originalAmount !== undefined,
     addOns,
-    location,
+    location: { ...location, name: `${space.region}, ${space.city}` },
   };
 }
 
+/** Every bookable space, in curated order. The listing page searches this list too. */
 export const spaceDetails: SpaceDetail[] = [
   wismaGkbi,
   ...recommendedSpaces.map(toDetail),
+  ...moreSpaces.map(toDetail),
 ];

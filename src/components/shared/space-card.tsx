@@ -12,6 +12,7 @@ type SpaceCardProps = {
   space: Space;
   priority?: boolean;
   variant?: SpaceCardVariant;
+  href?: string;
 };
 
 const variantStyles = {
@@ -41,6 +42,7 @@ export function SpaceCard({
   space,
   priority = false,
   variant = "default",
+  href,
 }: SpaceCardProps) {
   const { price, secondaryPrice } = space;
   const styles = variantStyles[variant];
@@ -69,7 +71,7 @@ export function SpaceCard({
           <div className="flex min-w-0 flex-col gap-1">
             <h3 className={styles.title}>
               <Link
-                href={`/spaces/${space.slug}`}
+                href={href ?? `/spaces/${space.slug}`}
                 className="rounded-sm outline-none after:absolute after:inset-0 after:rounded-lg focus-visible:after:ring-3 focus-visible:after:ring-ring/50"
               >
                 {space.name}

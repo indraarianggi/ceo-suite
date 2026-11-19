@@ -22,6 +22,7 @@ const SPACE_TYPE_PLURALS: Record<SpaceType, string> = {
   "meeting-room": "meeting rooms",
   "private-office": "private offices",
   coworking: "coworking spaces",
+  "event-space": "event spaces",
 };
 
 function formatValidUntil(voucher: Voucher): string {
