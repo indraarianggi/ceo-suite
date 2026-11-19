@@ -16,6 +16,11 @@ export const footerNav: NavItem[] = [
   { label: "News", href: "/#news" },
 ];
 
+export const bookingNav: NavItem[] = [
+  { label: "Home", href: "/" },
+  { label: "My Booking", href: "/my-booking" },
+];
+
 export const authLinks = {
   signIn: { label: "Sign In", href: "/login" },
   signUp: { label: "Sign Up", href: "/sign-up" },

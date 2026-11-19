@@ -41,7 +41,7 @@ export type SpaceStat = { kind: SpaceStatKind; count: number; label: string };
 
 export type AddOnUnit = "event" | "pax" | "hour" | "day";
 export type AddOnIcon =
-  "corkage" | "lunch" | "coffee" | "flip-chart" | "projector";
+  "corkage" | "lunch" | "coffee" | "flip-chart" | "projector" | "ac";
 export type AddOn = {
   id: string;
   name: string;

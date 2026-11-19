@@ -1,15 +1,8 @@
 import Image from "next/image";
 
+import { addOnIcons } from "@/lib/add-on-icons";
 import { formatAddOnUnit, formatRupiah } from "@/lib/format";
-import type { AddOn, AddOnIcon } from "@/types/space";
-
-const addOnIcons: Record<AddOnIcon, string> = {
-  corkage: "/images/icons/product/addon-corkage.svg",
-  lunch: "/images/icons/product/addon-lunch.svg",
-  coffee: "/images/icons/product/addon-coffee.svg",
-  "flip-chart": "/images/icons/product/addon-flip-chart.svg",
-  projector: "/images/icons/product/addon-projector.svg",
-};
+import type { AddOn } from "@/types/space";
 
 type AddOnsSectionProps = { addOns: AddOn[] };
 

@@ -6,12 +6,14 @@ import {
   forgotPasswordSchema,
   formatBirthDate,
   getPasswordChecks,
+  guestFormSchema,
   identitySchema,
   loginSchema,
   otpSchema,
   parseBirthDate,
   resetPasswordSchema,
   signUpSchema,
+  toInternationalPhone,
 } from "./validation.ts";
 
 const validSignUp = {
@@ -177,6 +179,34 @@ test("identitySchema: both fields required", () => {
   assert.equal(
     identitySchema.safeParse({ dateOfBirth: "19/08/2002", companyName: " " })
       .success,
+    false,
+  );
+});
+
+test("toInternationalPhone normalises national input behind the fixed +62 prefix", () => {
+  assert.equal(toInternationalPhone("0812-3456-7890"), "+6281234567890");
+  assert.equal(toInternationalPhone("812 3456 7890"), "+6281234567890");
+  assert.equal(toInternationalPhone("+62 812 3456 7890"), "+6281234567890");
+});
+
+test("guestFormSchema accepts a normal number and rejects junk", () => {
+  const ok = {
+    name: "Jane Doe",
+    email: "jane@example.com",
+    phone: "0812 3456 7890",
+  };
+  assert.equal(guestFormSchema.safeParse(ok).success, true);
+  assert.equal(guestFormSchema.safeParse({ ...ok, phone: "" }).success, false);
+  assert.equal(
+    guestFormSchema.safeParse({ ...ok, phone: "12345" }).success,
+    false,
+  );
+  assert.equal(
+    guestFormSchema.safeParse({ ...ok, phone: "abc" }).success,
+    false,
+  );
+  assert.equal(
+    guestFormSchema.safeParse({ ...ok, email: "not-an-email" }).success,
     false,
   );
 });

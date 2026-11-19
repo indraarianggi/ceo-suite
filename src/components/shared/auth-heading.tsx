@@ -36,6 +36,7 @@ export function AuthHeading({
       <p
         id={descriptionId}
         className={cn(
+          "wrap-anywhere",
           subtitleSize === "sm"
             ? "text-body-14-regular text-zinc-600"
             : "text-body-16-regular text-grey-600",

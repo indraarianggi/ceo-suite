@@ -133,6 +133,39 @@ export const signUpSchema = z.object({
 });
 export type SignUpValues = z.infer<typeof signUpSchema>;
 
+/** "Book as Guest": the contact subset of sign-up, without a password. */
+export const guestSchema = signUpSchema.pick({
+  name: true,
+  email: true,
+  phone: true,
+});
+export type GuestValues = z.infer<typeof guestSchema>;
+
+/** The Booking frames fix the phone prefix to Indonesia ("+62"). */
+export const GUEST_DIAL_CODE = "+62";
+
+/** "0812-3456-7890" or "+62 812 3456 7890" -> "+6281234567890". */
+export function toInternationalPhone(national: string): string {
+  const digits = national
+    .trim()
+    .replace(/^\+62/, "")
+    .replace(/\D/g, "")
+    .replace(/^0+/, "");
+  return `${GUEST_DIAL_CODE}${digits}`;
+}
+
+/** What the guest form edits: the number after the fixed "+62" prefix. */
+export const guestFormSchema = guestSchema.extend({
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Please enter your phone number.")
+    .refine((v) => /^\d{8,13}$/.test(toInternationalPhone(v).slice(3)), {
+      message: "Please enter a valid phone number.",
+    }),
+});
+export type GuestFormValues = z.infer<typeof guestFormSchema>;
+
 export const identitySchema = z.object({
   dateOfBirth: z
     .string()

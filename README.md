@@ -34,6 +34,19 @@ pnpm dev        # http://localhost:3000 (Next.js picks the next free port, e.g. 
 
 No other setup is needed: there is no database or API key. Authentication is mocked (see below).
 
+## Try the booking flow
+
+Booking is mocked too (`src/lib/bookings.ts`, `src/lib/booking-actions.ts`). Open a space (for example `/spaces/axa-tower-meeting-room-a`), pick a date and time, and press **Book**. That lands on `/booking?space=…&from=…&to=…`, which you can also type by hand (`yyyy-MM-dd` dates; `start`/`end` as `HH:mm` on the 30-minute grid, only for a single day).
+
+- **Signed in:** details, "Are your booking details correct?", terms, confirmed.
+- **Not signed in:** the same, plus **Book as Guest** (name, email, phone) and an email code. Any 6 digits work except `000000`.
+- **Add-ons:** price x quantity; per-pax items can't exceed the room's capacity.
+- **Vouchers:** `15DISCOUNT`, `MEETING15`, `BOARDROOM15` or `WELCOME15`. Each is 15% off, capped at Rp100,000, and only for meeting rooms.
+- **Try a failure:** type `[fail]` in **Additional Request**; the booking is rejected as unavailable.
+- **Bad links:** past or malformed dates return you to the space page; an unknown space shows the 404 page.
+
+The URL is never trusted for prices: the Server Action re-validates the selection and recomputes the total with the same `buildQuote()` the order summary uses.
+
 ## Try the auth flows
 
 Sign in, sign up (with email verification) and password reset all work out of the box. There is no backend and no real email: everything is mocked in `src/lib/auth.ts`, so you can try every screen and error state yourself. The guide below is the same on `pnpm dev`, on a production build, and on a deployed demo; just open the same paths on your own domain.

@@ -66,6 +66,13 @@ const addOns: AddOn[] = [
     unit: "day",
     icon: "projector",
   },
+  {
+    id: "overtime-ac",
+    name: "Overtime AC",
+    price: 200_000,
+    unit: "hour",
+    icon: "ac",
+  },
 ];
 
 const stats: SpaceStat[] = [

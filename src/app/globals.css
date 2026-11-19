@@ -29,6 +29,8 @@
   --container-auth-wide: 42.8125rem;
   --container-auth-dialog: 40rem;
   --container-auth-success: 20.5rem;
+  --container-booking-dialog: 49rem;
+  --container-booking-confirm: 32rem;
 }
 
 /* Page container: content is max 1600px wide and centered. The gutter grows
