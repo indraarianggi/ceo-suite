@@ -14,7 +14,7 @@ export async function BestDealsSection() {
     <section
       id="best-deals"
       aria-labelledby="best-deals-title"
-      className="relative scroll-mt-28 overflow-hidden py-12 xl:py-16"
+      className="relative scroll-mt-18 overflow-hidden py-12 xl:scroll-mt-28 xl:py-16"
     >
       <DecorBlob className="top-4 -left-16 size-32" />
       <div className="relative page-container flex flex-col gap-6">

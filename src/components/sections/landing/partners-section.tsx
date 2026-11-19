@@ -13,7 +13,7 @@ export async function PartnersSection() {
     <section
       id="partners"
       aria-labelledby="partners-title"
-      className="scroll-mt-28 py-12 xl:py-16"
+      className="scroll-mt-18 py-12 xl:scroll-mt-28 xl:py-16"
     >
       <div className="page-container flex flex-col gap-8 xl:gap-16">
         <SectionHeading

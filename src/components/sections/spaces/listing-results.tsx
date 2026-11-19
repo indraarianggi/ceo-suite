@@ -83,7 +83,7 @@ export function ListingResults({
             <li
               key={space.id}
               id={`space-${space.id}`}
-              className="flex min-w-0 scroll-mt-32 flex-col rounded-lg target:ring-3 target:ring-ring/50"
+              className="flex min-w-0 scroll-mt-22 flex-col rounded-lg target:ring-3 target:ring-ring/50 xl:scroll-mt-32"
             >
               <SpaceCard
                 space={space}

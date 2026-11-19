@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- CEO SUITE monogram: the wordmark's geometric "C" (half ring with flat arms) on brand red (product-800). -->
+  <rect width="64" height="64" rx="14" fill="#843030"/>
+  <path fill="#fff" d="M50 14H33a18 18 0 0 0 0 36h17v-8H33a10 10 0 0 1 0-20h17z"/>
+</svg>

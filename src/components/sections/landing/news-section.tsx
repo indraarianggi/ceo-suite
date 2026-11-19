@@ -13,7 +13,7 @@ export async function NewsSection() {
     <section
       id="news"
       aria-labelledby="news-title"
-      className="scroll-mt-28 py-12 xl:pt-14 xl:pb-19"
+      className="scroll-mt-18 py-12 xl:scroll-mt-28 xl:pt-14 xl:pb-19"
     >
       <div className="page-container grid gap-10 xl:grid-cols-[782fr_760fr] xl:gap-x-14">
         <div className="flex flex-col gap-8 xl:order-first xl:row-span-2 xl:gap-10">

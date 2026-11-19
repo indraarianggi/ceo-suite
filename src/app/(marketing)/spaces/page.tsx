@@ -123,7 +123,7 @@ async function SpacesContent({
         <CategoryIntroSection intro={categoryIntros[view]} />
       )}
 
-      <div id="results" className="scroll-mt-28 xl:flex">
+      <div id="results" className="scroll-mt-18 xl:flex xl:scroll-mt-28">
         <div className="flex min-w-0 page-gutter-start flex-col gap-10 py-8 pe-4 md:pe-8 xl:flex-1 xl:gap-12 xl:py-12 xl:pe-20">
           {mode === "search" && (
             <h1 className="text-heading-31-bold text-grey-950">

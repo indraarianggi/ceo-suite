@@ -14,7 +14,7 @@ export async function RecommendedSection() {
     <section
       id="recommended"
       aria-labelledby="recommended-title"
-      className="scroll-mt-28 py-12 xl:py-16"
+      className="scroll-mt-18 py-12 xl:scroll-mt-28 xl:py-16"
     >
       <div className="page-container flex flex-col gap-8">
         <SectionHeading

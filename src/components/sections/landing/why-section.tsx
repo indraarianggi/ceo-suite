@@ -7,7 +7,7 @@ export function WhySection() {
     <section
       id="why-ceo-suite"
       aria-labelledby="why-title"
-      className="scroll-mt-28 py-12 xl:py-20"
+      className="scroll-mt-18 py-12 xl:scroll-mt-28 xl:py-20"
     >
       <div className="page-container grid items-center gap-12 xl:grid-cols-9 xl:gap-x-20">
         <ul className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 xl:col-span-4 xl:gap-y-26">

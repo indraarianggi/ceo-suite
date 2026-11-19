@@ -8,7 +8,7 @@ export function AppDownloadSection() {
     <section
       id="app"
       aria-labelledby="app-title"
-      className="relative scroll-mt-28 overflow-hidden bg-linear-to-b from-product-50 to-product-100"
+      className="relative scroll-mt-18 overflow-hidden bg-linear-to-b from-product-50 to-product-100 xl:scroll-mt-28"
     >
       <Image
         src="/images/app/bg-wave-left.svg"

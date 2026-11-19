@@ -1,6 +1,6 @@
 import { LogOut } from "lucide-react";
-import Link from "next/link";
 
+import { MobileNavLink } from "@/components/layout/mobile-nav";
 import { UserAvatar } from "@/components/shared/user-avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
@@ -20,31 +20,21 @@ export async function MobileAccount() {
   if (!user) {
     return (
       <>
-        <SheetClose
-          nativeButton={false}
-          render={
-            <Link
-              href={authLinks.signIn.href}
-              className={cn(
-                buttonVariants({ variant: "outline", size: "xl" }),
-                "text-primary",
-              )}
-            />
-          }
+        <MobileNavLink
+          href={authLinks.signIn.href}
+          className={cn(
+            buttonVariants({ variant: "outline", size: "xl" }),
+            "text-primary",
+          )}
         >
           {authLinks.signIn.label}
-        </SheetClose>
-        <SheetClose
-          nativeButton={false}
-          render={
-            <Link
-              href={authLinks.signUp.href}
-              className={cn(buttonVariants({ size: "xl" }))}
-            />
-          }
+        </MobileNavLink>
+        <MobileNavLink
+          href={authLinks.signUp.href}
+          className={cn(buttonVariants({ size: "xl" }))}
         >
           {authLinks.signUp.label}
-        </SheetClose>
+        </MobileNavLink>
       </>
     );
   }

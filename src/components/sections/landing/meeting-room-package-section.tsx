@@ -15,7 +15,7 @@ export function MeetingRoomPackageSection() {
     <section
       id="meeting-room-package"
       aria-labelledby="meeting-room-package-title"
-      className="relative scroll-mt-28 overflow-hidden py-12 xl:py-20"
+      className="relative scroll-mt-18 overflow-hidden py-12 xl:scroll-mt-28 xl:py-20"
     >
       <DecorBlob className="top-52 left-104 size-50 max-xl:hidden" />
       <DecorBlob className="top-57 -right-8 size-42 max-xl:hidden" />

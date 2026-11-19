@@ -20,7 +20,7 @@ export async function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-title"
-      className="scroll-mt-28 py-12 xl:pt-20 xl:pb-25"
+      className="scroll-mt-18 py-12 xl:scroll-mt-28 xl:pt-20 xl:pb-25"
     >
       <div className="page-container grid gap-10 xl:grid-cols-[500fr_981fr] xl:gap-x-30">
         <div className="flex flex-col justify-between gap-10 xl:gap-15">

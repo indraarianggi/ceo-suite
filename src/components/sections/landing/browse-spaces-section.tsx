@@ -12,7 +12,7 @@ export async function BrowseSpacesSection() {
     <section
       id="browse-spaces"
       aria-labelledby="browse-spaces-title"
-      className="scroll-mt-28 pt-8 pb-12 xl:pt-12 xl:pb-25"
+      className="scroll-mt-18 pt-8 pb-12 xl:scroll-mt-28 xl:pt-12 xl:pb-25"
     >
       <div className="page-container flex flex-col gap-8 xl:gap-12">
         <SectionHeading
