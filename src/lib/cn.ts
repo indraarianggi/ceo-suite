@@ -31,7 +31,17 @@ export const cn = createCn({
       "max-w": [{ "max-w": ["auth", "auth-wide"] }],
       rounded: [{ rounded: ["card"] }],
       shadow: [
-        { shadow: ["card", "brand", "menu", "panel", "float", "popover"] },
+        {
+          shadow: [
+            "card",
+            "brand",
+            "menu",
+            "panel",
+            "float",
+            "popover",
+            "material",
+          ],
+        },
       ],
     },
     conflictingClassGroups: {

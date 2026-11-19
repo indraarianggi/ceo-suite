@@ -47,6 +47,16 @@ Booking is mocked too (`src/lib/bookings.ts`, `src/lib/booking-actions.ts`). Ope
 
 The URL is never trusted for prices: the Server Action re-validates the selection and recomputes the total with the same `buildQuote()` the order summary uses.
 
+## Try My Booking
+
+My Booking (`/my-booking`) needs a signed-in user; signed-out visitors are sent to `/login` and come back afterwards.
+
+- Sign in as `janedoe@gmail.com` (any password) to see demo bookings: two **Active** (one green **Success**, one red **Expired by Midtrans**) and two in **History**. Other accounts start empty, which shows the empty states.
+- Book a space while signed in (see above): **View Booking** on the confirmation page lists it as Active, and each card opens its details page (`/my-booking/CS-XXXXXXXX`).
+- Bookings made in your browser live in an httpOnly cookie (the newest few that fit in 4 KB), so they survive restarts but not another browser. A real API replaces the store functions in `src/lib/bookings.ts`.
+- **Active** means the booking has not ended yet; **History** means it has. The demo bookings' dates are relative to today, so both tabs stay populated.
+- Booking Details shows what the customer confirmed: the Final Price always equals the checkout total (PPN is shown as included, Overtime and Deposit are Rp0).
+
 ## Try the auth flows
 
 Sign in, sign up (with email verification) and password reset all work out of the box. There is no backend and no real email: everything is mocked in `src/lib/auth.ts`, so you can try every screen and error state yourself. The guide below is the same on `pnpm dev`, on a production build, and on a deployed demo; just open the same paths on your own domain.

@@ -15,9 +15,13 @@ import { bookingNav } from "@/data/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-export function BookingHeader() {
+type BookingHeaderProps = {
+  activeHref?: string;
+};
+
+export function BookingHeader({ activeHref = "/" }: BookingHeaderProps) {
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white shadow-sm print:hidden">
       <div className="page-container flex h-18 items-center justify-between xl:h-28">
         <Link
           href="/"
@@ -41,9 +45,11 @@ export function BookingHeader() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    aria-current={item.href === activeHref ? "page" : undefined}
                     className={cn(
                       "rounded-sm text-body-16-medium text-grey-600 transition-colors hover:text-primary",
-                      item.href === "/" && "text-body-16-bold text-primary",
+                      item.href === activeHref &&
+                        "text-body-16-bold text-primary",
                     )}
                   >
                     {item.label}
@@ -57,7 +63,7 @@ export function BookingHeader() {
           </Suspense>
         </div>
 
-        <MobileNav>
+        <MobileNav items={bookingNav} activeHref={activeHref}>
           <Suspense fallback={<MobileAccountFallback />}>
             <MobileAccount />
           </Suspense>

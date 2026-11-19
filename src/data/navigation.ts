@@ -1,5 +1,7 @@
 export type NavItem = { label: string; href: string };
 
+export const myBookingHref = "/my-booking";
+
 export const mainNav: NavItem[] = [
   { label: "Workspaces", href: "/#browse-spaces" },
   { label: "Services", href: "/#why-ceo-suite" },
@@ -18,7 +20,7 @@ export const footerNav: NavItem[] = [
 
 export const bookingNav: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "My Booking", href: "/my-booking" },
+  { label: "My Booking", href: myBookingHref },
 ];
 
 export const authLinks = {

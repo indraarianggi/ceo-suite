@@ -26,9 +26,11 @@ export function LoginForm() {
   });
 
   async function onSubmit(values: LoginValues) {
-    // On success the action redirects home, so this promise never resolves and
+    // `?next=` is read at submit time, so the login page stays fully static.
+    const next = new URLSearchParams(window.location.search).get("next");
+    // On success the action redirects, so this promise never resolves and
     // the button stays in its loading state until the navigation lands.
-    const result = await loginAction(values);
+    const result = await loginAction(values, next);
     if (result?.error) setError("root", { message: result.error });
   }
 

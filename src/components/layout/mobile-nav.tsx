@@ -13,14 +13,20 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { mainNav } from "@/data/navigation";
+import { mainNav, type NavItem } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
 type MobileNavProps = {
   children: React.ReactNode;
+  items?: NavItem[];
+  activeHref?: string;
 };
 
-export function MobileNav({ children }: MobileNavProps) {
+export function MobileNav({
+  children,
+  items = mainNav,
+  activeHref,
+}: MobileNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -42,14 +48,21 @@ export function MobileNav({ children }: MobileNavProps) {
         </SheetHeader>
         <nav aria-label="Mobile" className="flex flex-col px-4">
           <ul className="flex flex-col">
-            {mainNav.map((item) => (
+            {items.map((item) => (
               <li key={item.href}>
                 <SheetClose
                   nativeButton={false}
                   render={
                     <Link
                       href={item.href}
-                      className="block rounded-lg px-2 py-3 text-heading-20-medium text-grey-600 transition-colors hover:bg-accent hover:text-primary"
+                      aria-current={
+                        item.href === activeHref ? "page" : undefined
+                      }
+                      className={cn(
+                        "block rounded-lg px-2 py-3 text-heading-20-medium text-grey-600 transition-colors hover:bg-accent hover:text-primary",
+                        item.href === activeHref &&
+                          "text-heading-20-bold text-primary",
+                      )}
                     />
                   }
                 >

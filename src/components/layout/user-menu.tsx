@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronDown, LogOut } from "lucide-react";
+import { CalendarCheck, ChevronDown, LogOut } from "lucide-react";
+import Link from "next/link";
 import { useTransition } from "react";
 
 import { UserAvatar } from "@/components/shared/user-avatar";
@@ -10,9 +11,11 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuLinkItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { myBookingHref } from "@/data/navigation";
 import { logoutAction } from "@/lib/auth-actions";
 import type { SessionUser } from "@/types/user";
 
@@ -54,6 +57,13 @@ export function UserMenu({ user }: UserMenuProps) {
           </DropdownMenuLabel>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        <DropdownMenuLinkItem
+          render={<Link href={myBookingHref} />}
+          className="gap-3 rounded-lg px-3 py-2.5 text-body-16-medium text-product-800 data-highlighted:bg-accent data-highlighted:text-product-800"
+        >
+          <CalendarCheck aria-hidden className="size-5" />
+          My Booking
+        </DropdownMenuLinkItem>
         <DropdownMenuItem
           disabled={pending}
           onClick={() => {

@@ -66,3 +66,28 @@ export type BookingRequest = {
   /** Null when the visitor is signed in (the session identifies them). */
   guest: GuestDetails | null;
 };
+
+export type BookingStatus = "success" | "expired";
+
+/**
+ * A booking as stored (cookie or seed). Compact on purpose: the space is
+ * rehydrated from `spaceSlug`, and the quote is a snapshot of what the
+ * customer confirmed so later price changes never rewrite history.
+ */
+export type StoredBooking = {
+  /** "CS-XXXXXXXX"; doubles as the id and the "Booking Invoice" shown in Figma. */
+  reference: string;
+  /** Lower-case; bookings are only listed for their owner. */
+  ownerEmail: string;
+  contactName: string;
+  spaceSlug: string;
+  selection: BookingSelection;
+  note: string;
+  quote: BookingQuote;
+  status: BookingStatus;
+  /** ISO timestamp. */
+  createdAt: string;
+};
+
+/** A stored booking joined with its space, ready to render. */
+export type BookingView = StoredBooking & { space: SpaceDetail };

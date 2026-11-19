@@ -6,7 +6,7 @@ import { vouchers } from "@/data/vouchers";
 import { parseBookingParams, selectionToDuration } from "@/lib/booking-params";
 import { buildQuote, findVoucher, resolveAddOns } from "@/lib/booking-quote";
 import type { SubmitBookingResult } from "@/lib/booking-errors";
-import { createBooking } from "@/lib/bookings";
+import { createBooking, saveBooking } from "@/lib/bookings";
 import { getSession } from "@/lib/session";
 import { getSpaceBySlug } from "@/lib/spaces";
 import { guestSchema } from "@/lib/validation";
@@ -100,6 +100,18 @@ export async function submitBooking(
     contact: user ?? (guest as NonNullable<typeof guest>),
   });
   if (!created.ok) return { ok: false, error: created.error };
+
+  // Signed-in users get the booking in My Booking; guests have no session to list it with.
+  if (user) {
+    await saveBooking({
+      owner: user,
+      reference: created.reference,
+      spaceSlug: space.slug,
+      selection: params.selection,
+      note,
+      quote,
+    });
+  }
 
   return { ok: true, reference: created.reference, quote };
 }

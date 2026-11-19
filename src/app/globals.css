@@ -214,6 +214,8 @@
   --shadow-float: 0 20px 20px 0 rgb(57 57 57 / 0.2);
   /* Date and time popovers */
   --shadow-popover: 0 10px 20px 0 rgb(57 57 57 / 0.2);
+  --shadow-material:
+    0 1px 3px 1px rgb(0 0 0 / 0.15), 0 1px 2px 0 rgb(0 0 0 / 0.3);
 
   --blur-glow: 256px;
   /* Auth header glow */
