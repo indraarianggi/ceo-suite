@@ -1,11 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
+import {
+  HeaderAccount,
+  HeaderAccountFallback,
+} from "@/components/layout/header-account";
+import {
+  MobileAccount,
+  MobileAccountFallback,
+} from "@/components/layout/mobile-account";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { buttonVariants } from "@/components/ui/button";
-import { authLinks, mainNav } from "@/data/navigation";
+import { mainNav } from "@/data/navigation";
 import { siteConfig } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   return (
@@ -41,26 +48,18 @@ export function SiteHeader() {
               ))}
             </ul>
           </nav>
-          <div className="flex items-center gap-3">
-            <Link
-              href={authLinks.signIn.href}
-              className={cn(
-                buttonVariants({ variant: "ghost", size: "xl" }),
-                "px-4 text-primary",
-              )}
-            >
-              {authLinks.signIn.label}
-            </Link>
-            <Link
-              href={authLinks.signUp.href}
-              className={cn(buttonVariants({ size: "xl" }))}
-            >
-              {authLinks.signUp.label}
-            </Link>
-          </div>
+          {/* Reads the session cookie: streams in behind Suspense, so the rest of
+              the header (and the page) stays in the static shell. */}
+          <Suspense fallback={<HeaderAccountFallback />}>
+            <HeaderAccount />
+          </Suspense>
         </div>
 
-        <MobileNav />
+        <MobileNav>
+          <Suspense fallback={<MobileAccountFallback />}>
+            <MobileAccount />
+          </Suspense>
+        </MobileNav>
       </div>
     </header>
   );

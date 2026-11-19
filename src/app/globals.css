@@ -24,6 +24,11 @@
 
   /* Page content width: 1600px inside the 1920px Figma frame (160px gutters). */
   --container-page: 100rem;
+  /* Auth pages: form column (584), wide reset column (685), dialogs (640 / 328). */
+  --container-auth: 36.5rem;
+  --container-auth-wide: 42.8125rem;
+  --container-auth-dialog: 40rem;
+  --container-auth-success: 20.5rem;
 }
 
 /* Page container: content is max 1600px wide and centered. The gutter grows
@@ -164,9 +169,15 @@
   --color-slate-400: #98a2b3;
   --color-slate-500: #667085;
 
+  --color-zinc-600: #52525b;
+  --color-required: #e94b3d;
+  --color-ink: #090914; /* auth page titles */
+  --color-avatar: #a15293; /* initials avatar in the logged-in header */
+
   /* Type scale: Figma text styles `Body/*` and `Heading/*` (line-height 120%, letter-spacing 0) */
   --text-body-10: 0.625rem;
   --text-body-13: 0.8125rem;
+  --text-body-14: 0.875rem; /* Login/Sign Up subtitle only */
   --text-body-16: 1rem;
   --text-heading-20: 1.25rem;
   --text-heading-25: 1.5625rem;
@@ -184,6 +195,7 @@
   --radius-2xl: 1rem;
   --radius-3xl: 1.25rem;
   --radius-4xl: 2rem;
+  --radius-card: 1.5rem;
 
   /* Shadows: measured from landing frame, rounded to the 4px scale. */
   --shadow-xs: 0 1px 2px 0 rgb(16 24 40 / 0.05);
@@ -202,6 +214,8 @@
   --shadow-popover: 0 10px 20px 0 rgb(57 57 57 / 0.2);
 
   --blur-glow: 256px;
+  /* Auth header glow */
+  --blur-auth-glow: 103px;
 }
 
 /* Logo marquee ("Trusted by 80,000+ customers"): the track holds two copies of
@@ -269,6 +283,11 @@
   font-size: var(--text-body-13);
   line-height: 1.2;
   font-weight: 700;
+}
+@utility text-body-14-regular {
+  font-size: var(--text-body-14);
+  line-height: 1.4;
+  font-weight: 400;
 }
 @utility text-body-16-regular {
   font-size: var(--text-body-16);

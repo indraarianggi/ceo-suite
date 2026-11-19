@@ -19,4 +19,5 @@ export const footerNav: NavItem[] = [
 export const authLinks = {
   signIn: { label: "Sign In", href: "/login" },
   signUp: { label: "Sign Up", href: "/sign-up" },
+  forgotPassword: { label: "Forgot Password", href: "/forgot-password" },
 } as const;

@@ -13,10 +13,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { authLinks, mainNav } from "@/data/navigation";
+import { mainNav } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
-export function MobileNav() {
+type MobileNavProps = {
+  children: React.ReactNode;
+};
+
+export function MobileNav({ children }: MobileNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -55,25 +59,7 @@ export function MobileNav() {
             ))}
           </ul>
         </nav>
-        <div className="mt-auto flex flex-col gap-3 p-4">
-          <Link
-            href={authLinks.signIn.href}
-            onClick={() => setOpen(false)}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "xl" }),
-              "text-primary",
-            )}
-          >
-            {authLinks.signIn.label}
-          </Link>
-          <Link
-            href={authLinks.signUp.href}
-            onClick={() => setOpen(false)}
-            className={cn(buttonVariants({ size: "xl" }))}
-          >
-            {authLinks.signUp.label}
-          </Link>
-        </div>
+        <div className="mt-auto flex flex-col gap-3 p-4">{children}</div>
       </SheetContent>
     </Sheet>
   );

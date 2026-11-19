@@ -6,6 +6,7 @@ import { createCn } from "cn/config";
 const textSizes = [
   "body-10",
   "body-13",
+  "body-14",
   "body-16",
   "heading-20",
   "heading-25",
@@ -27,10 +28,14 @@ export const cn = createCn({
   extend: {
     classGroups: {
       "font-size": [{ text: textStyles }],
-      // Custom shadow tokens must replace a component's default `shadow-md`.
+      "max-w": [{ "max-w": ["auth", "auth-wide"] }],
+      rounded: [{ rounded: ["card"] }],
       shadow: [
         { shadow: ["card", "brand", "menu", "panel", "float", "popover"] },
       ],
+    },
+    conflictingClassGroups: {
+      "font-size": ["font-weight", "leading"],
     },
   },
 });
