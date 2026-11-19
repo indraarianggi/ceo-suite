@@ -1,16 +1,69 @@
 # CEO SUITE
 
-Workspace booking website: search and book private offices, coworking spaces and meeting rooms.
+Workspace booking website: search and book private offices, coworking spaces, meeting rooms and event spaces.
 
-Built with Next.js (App Router, Cache Components), TypeScript, Tailwind CSS v4, shadcn/ui (Base UI) and Motion.
+There is no backend yet. Spaces, accounts and bookings are mocked behind small functions in `src/lib/`, so every page and flow works out of the box and a real API can replace those functions later.
 
-## Getting started
+## Tech stack
 
-Requires Node.js 20.9+ and pnpm.
+| Area         | Technology                                                                                                                  |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| Framework    | [Next.js](https://nextjs.org) 16 (App Router, Cache Components with Partial Prerendering, Server Actions, Turbopack)        |
+| UI library   | [React](https://react.dev) 19                                                                                               |
+| Language     | [TypeScript](https://www.typescriptlang.org) 5 (strict)                                                                     |
+| Styling      | [Tailwind CSS](https://tailwindcss.com) 4, design tokens from Figma in `src/app/globals.css`, `tw-animate-css`              |
+| Components   | [shadcn/ui](https://ui.shadcn.com) on [Base UI](https://base-ui.com), [Lucide](https://lucide.dev) icons                    |
+| Forms        | [React Hook Form](https://react-hook-form.com) + [Zod](https://zod.dev) 4 (schemas shared by the client and Server Actions) |
+| Dates        | [date-fns](https://date-fns.org) 4, [React DayPicker](https://daypicker.dev) 10                                             |
+| Motion       | [Motion](https://motion.dev) (`motion/react`), reduced motion respected                                                     |
+| Font         | Plus Jakarta Sans via `next/font`                                                                                           |
+| Testing      | Node's built-in test runner (`node --test`) for the domain logic in `src/lib/`                                              |
+| Code quality | ESLint 9 (`eslint-config-next`), Prettier 3 with `prettier-plugin-tailwindcss`                                              |
+| Tooling      | pnpm 12, Node.js 24 (20.9+ supported)                                                                                       |
+
+## Setup
+
+### Prerequisites
+
+- **Node.js 20.9 or newer** (developed on Node.js 24).
+- **pnpm 12.** The exact version is pinned in `package.json` (`packageManager`). The easiest way to get it is Corepack, which ships with Node.js:
+
+  ```bash
+  corepack enable
+  ```
+
+### Install and run
 
 ```bash
+git clone git@github.com:indraarianggi/ceo-suite.git
+cd ceo-suite
 pnpm install
 pnpm dev        # http://localhost:3000 (Next.js picks the next free port, e.g. 3001, if 3000 is busy)
+```
+
+### Environment (optional)
+
+Locally nothing is required. For a deployed site, set the public URL so canonical links, Open Graph images, the sitemap and structured data point to the right domain. Create `.env.local` (or set it in your host's dashboard):
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
+
+It is read at build time, so rebuild (or redeploy) after changing it.
+
+### Production build
+
+```bash
+pnpm build
+pnpm start      # serves the build on http://localhost:3000
+```
+
+Sign-in uses a `Secure` cookie in production builds, so use https, or Chrome/Firefox on `localhost`.
+
+### Before you commit
+
+```bash
+pnpm lint && pnpm typecheck && pnpm test && pnpm format:check && pnpm build
 ```
 
 ## Scripts
@@ -26,13 +79,27 @@ pnpm dev        # http://localhost:3000 (Next.js picks the next free port, e.g. 
 | `pnpm format`       | Format with Prettier (+ class sorting) |
 | `pnpm format:check` | Check formatting                       |
 
-## Environment
+## Pages
 
-| Variable               | Purpose                                         |
-| ---------------------- | ----------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL for metadata, sitemap and OG |
+All pages are built from the Figma design at 1920px and adapt down to 320px (mobile and tablet layouts are designed in code).
 
-No other setup is needed: there is no database or API key. Authentication is mocked (see below).
+| Page             | Path                                      | What it does                                                                                                                                                                                                                |
+| ---------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Landing          | `/`                                       | Hero with image slider and space search, Browse Spaces, Recommended For You, Why CEO SUITE, Promotions, Best Deals, Meeting Room Package, Corporate Partners, trusted-by logo marquee, News, FAQ, app download, newsletter. |
+| Space listing    | `/spaces`                                 | All spaces with type filters, a map and "See More" paging.                                                                                                                                                                  |
+| Category listing | `/spaces?type=meeting-room` (and others)  | One space type with its own hero and intro: private offices, co-working, meeting rooms, event spaces.                                                                                                                       |
+| Search results   | `/spaces?city=Jakarta&from=…&to=…&type=…` | Results for the hero search (city, region, dates, types), with an empty state when nothing matches.                                                                                                                         |
+| Space detail     | `/spaces/[slug]`                          | Photo gallery with lightbox, prices, details, add-ons, location map, booking card (date, time, live total), similar spaces.                                                                                                 |
+| Booking          | `/booking?space=…&from=…&to=…`            | Booking details, add-ons, vouchers, terms and confirmation; guests can book with name, email, phone and an email code.                                                                                                      |
+| My Booking       | `/my-booking`                             | Signed-in users' bookings in **Active** and **History** tabs (signed-out visitors are sent to sign in and back).                                                                                                            |
+| Booking details  | `/my-booking/[reference]`                 | One booking: overview, add-ons, payment and price summary.                                                                                                                                                                  |
+| Sign in          | `/login`                                  | Email and password, remember me, return to the page you came from.                                                                                                                                                          |
+| Sign up          | `/sign-up`                                | Registration with password rules, optional identity step and email verification.                                                                                                                                            |
+| Forgot password  | `/forgot-password`                        | Email, one-time code, new password, success.                                                                                                                                                                                |
+
+Also generated: `sitemap.xml`, `robots.txt`, favicon and Apple touch icon, and structured data (Organization and LocalBusiness on the landing page, Product and BreadcrumbList on space pages, ItemList on listings).
+
+Not built yet: `/promotions`, `/news`, `/partners` and `/contact`. Some links on the landing page still point to them and show the 404 page.
 
 ## Try the booking flow
 
